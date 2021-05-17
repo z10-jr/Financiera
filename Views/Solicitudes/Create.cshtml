@@ -1,0 +1,299 @@
+﻿
+
+
+@model Financiera.Models.Solicitudes
+
+@{
+    ViewBag.Title = "Crear Solicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="idCliente">Cliente</label>
+            <div class="col-md-10">
+                <input id="IdClienteTag" class="form-control">
+                @Html.EditorFor(model => model.idCliente, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                @Html.ValidationMessageFor(model => model.idCliente, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="idClienteCotitular">Cotitular</label>
+            <div class="col-md-10">
+                <input id="IdClienteCotitular" class="form-control">
+                @Html.EditorFor(model => model.idConyuge, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                @Html.ValidationMessageFor(model => model.idConyuge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.idUsuario, "idUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idUsuario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idUsuario, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="idVendedor">Vendedor</label>
+            <div class="col-md-10">
+                <input id="IdVendedorTag" class="form-control">
+                @Html.EditorFor(model => model.idVendedor, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                @Html.ValidationMessageFor(model => model.idVendedor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <label class="control-label col-md-2" for="idEntidad">Entidad Financiera</label>
+            <div class="col-md-10">
+                @Html.DropDownList("idEntidad", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idEntidad, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.idRechazo, "idRechazo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idRechazo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idRechazo, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.idEstado, "idEstado", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idEstado", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idEstado, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="monto">Monto</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.monto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.monto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <label class="control-label col-md-2" for="codigoEntidad">Codigo Entidad</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codigoEntidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codigoEntidad, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.entregaGestor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.entregaGestor)
+                    @Html.ValidationMessageFor(model => model.entregaGestor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaEntregaGestor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaEntregaGestor, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.fechaEntregaGestor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.prendaInscripta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.prendaInscripta)
+                    @Html.ValidationMessageFor(model => model.prendaInscripta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaInscripcionPrenda, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaInscripcionPrenda, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.fechaInscripcionPrenda, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaUltimoPago, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaUltimoPago, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.fechaUltimoPago, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaFirma, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaFirma, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.fechaFirma, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fechaNuevaLlamada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaNuevaLlamada, new { htmlAttributes = new { @class = "form-control", @type = "datetime-local" } })
+                @Html.ValidationMessageFor(model => model.fechaNuevaLlamada, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cuotas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cuotas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cuotas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vehiculo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vehiculo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Vehiculo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="bancos">Entidades</label>
+            <div class="col-md-10">
+                @foreach (Financiera.Models.Entidades item in ViewBag.idEntidades)
+                {
+
+                    <input class="form-check-input" type="checkbox" name="entidadList" value="@item.id">
+                    <label class="form-check-label" for="gridCheck1">
+                        @item.nombre
+                    </label><br />
+
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval");
+<script type="text/javascript">
+
+        $(function () {
+
+            $("#IdClienteTag").keypress(function () {
+                $("#idCliente").val("");
+            });
+            $("#IdClienteTag").autocomplete({
+              source: "@Url.Action("SearchClientes", "Clientes")",
+              minLength: 1,
+                select: function (event, ui) {
+                    $("#idCliente").val(ui.item.id);
+                }
+            });
+
+            $("#IdClienteCotitular").keypress(function () {
+                $("#idConyuge").val("");
+            });
+            $("#IdClienteCotitular").autocomplete({
+              source: "@Url.Action("SearchClientes", "Clientes")",
+              minLength: 1,
+                select: function (event, ui) {
+                    $("#idCliente").val(ui.item.id);
+                }
+            });
+
+            
+            $("#IdVendedorTag").keypress(function () {
+                $("#idVendedor").val("");
+            });
+            $("#IdVendedorTag").autocomplete({
+              source: "@Url.Action("SearchVendedores", "Vendedores")",
+              minLength: 1,
+                select: function (event, ui) {
+                    $("#idVendedor").val(ui.item.id);
+                }
+            });
+
+
+            var message = $('#MessageError').text();
+
+
+            if (message !== '') {
+
+                toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+                //toastr.info('Are you the 6 fingered man?');
+                //// Display a warning toast, with no title
+                //toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
+
+                //// Display a success toast, with a title
+                //toastr.success('Have fun storming the castle!', 'Miracle Max Says');
+
+                //// Display an error toast, with a title
+                toastr.error(message, 'Error!', { timeOut: 5000 });
+
+                //// Immediately remove current toasts without using animation
+                //toastr.remove();
+
+                //// Remove current toasts using animation
+                //toastr.clear();
+
+                //// Override global options
+                //toastr.success('We do have the Kapua suite available.', 'Turtle Bay Resort', { timeOut: 5000 });
+            }
+
+        });
+
+</script>
+
+
+
+}
+
+
+

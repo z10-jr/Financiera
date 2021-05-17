@@ -1,0 +1,81 @@
+﻿@model Financiera.Models.Observaciones
+
+@{
+    ViewBag.Title = "Editar Observación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span id="Message" class="d-none">@TempData["Error"]</span>
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.idSolicitud)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idSolicitud, "idSolicitud", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.idSolicitud, new { htmlAttributes = new { @class = "form-control text-box single-line", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.idSolicitud, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.observacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.observacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.observacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idTipoObservacion, "idTipoObservacion", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idTipoObservacion", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idTipoObservacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idUsuario, "idUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idUsuario", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idUsuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @Html.ActionLink("Volver", "Index", new { id = ViewBag.idSolicitud }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

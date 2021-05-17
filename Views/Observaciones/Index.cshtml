@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Financiera.Models.Observaciones>
+
+@{
+    ViewBag.Title = "Observaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span id="MessageError" class="d-none">@TempData["Error"]</span>
+<span id="MessageSuccess" class="d-none">@TempData["Success"]</span>
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+    <p>
+        @Html.ActionLink("Crear", "Create", new { id = ViewBag.idSolicitud }, new { @class = "btn btn-primary" })
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        N° Solicitud
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.observacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TiposObservaciones.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.usuarios.nombre)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        N° Solicitud
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.observacion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fecha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TiposObservaciones.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.usuarios.nombre)
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idSolicitud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.observacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TiposObservaciones.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.usuarios.nombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+
+<script src="@Url.Content("~/Content/vendor/jquery/jquery.min.js")"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        var messageError = $('#MessageError').text();
+        var messageSuccess = $('#MessageSuccess').text();
+
+        if (messageSuccess !== '') {
+            toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+            //// Display a success toast, with a title
+            toastr.success(messageSuccess, 'Atención!');
+        }
+
+        if (messageError !== '') {
+
+            toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+            //toastr.info('Are you the 6 fingered man?');
+            //// Display a warning toast, with no title
+            //toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
+
+            //// Display a success toast, with a title
+            //toastr.success('Have fun storming the castle!', 'Miracle Max Says');
+
+            //// Display an error toast, with a title
+            toastr.error(message, 'Error!', { timeOut: 5000 });
+
+            //// Immediately remove current toasts without using animation
+            //toastr.remove();
+
+            //// Remove current toasts using animation
+            //toastr.clear();
+
+            //// Override global options
+            //toastr.success('We do have the Kapua suite available.', 'Turtle Bay Resort', { timeOut: 5000 });
+        }
+
+
+
+    });
+
+</script>
+
+
+
+
+

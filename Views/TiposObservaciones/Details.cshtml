@@ -1,0 +1,48 @@
+﻿@model Financiera.Models.TiposObservaciones
+
+@{
+    ViewBag.Title = "Detalle Tipo de Observación";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<span id="Message" class="d-none">@TempData["Error"]</span>
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+            <dt>
+                Habilitado
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.habilitado)
+            </dd>
+
+        </dl>
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+
+

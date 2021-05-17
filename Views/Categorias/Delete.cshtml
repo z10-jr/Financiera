@@ -1,0 +1,49 @@
+﻿@model Financiera.Models.Categorias
+
+@{
+    ViewBag.Title = "Eliminar Categoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <dl class="dl-horizontal">
+            <dt>
+                Nombre
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Habilitado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Habilitado)
+            </dd>
+
+        </dl>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+
+
+

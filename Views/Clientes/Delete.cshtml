@@ -1,0 +1,207 @@
+﻿@model Financiera.Models.Clientes
+
+@{
+    ViewBag.Title = "Eliminar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span id="Message" class="d-none">@TempData["Error"]</span>
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Apellido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido)
+        </dd>
+
+        <dt>
+            DNI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+
+        <dt>
+            Domicilio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.domicilio)
+        </dd>
+
+        <dt>
+            Tel&eacute;fono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            Celular
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.celular)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            Fecha de Nacimiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            Estado Civil
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estadoCivil)
+        </dd>
+
+        <dt>
+            Localidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.localidad)
+        </dd>
+
+        <dt>
+            Codigo Postal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoPostal)
+        </dd>
+
+        <dt>
+            Observaciones
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observaciones)
+        </dd>
+
+        <dt>
+            Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empresa)
+        </dd>
+
+        <dt>
+            Cargo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargo)
+        </dd>
+
+        <dt>
+            CUIT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuit)
+        </dd>
+
+        <dt>
+            Domicilio Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.domicilioEmpresa)
+        </dd>
+
+        <dt>
+            Localidad Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.localidadEmpresa)
+        </dd>
+
+        <dt>
+            C.P. Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoPostalEmpresa)
+        </dd>
+
+        <dt>
+            Ingresos
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ingresos)
+        </dd>
+
+        <dt>
+            Antig&uuml;edad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.antiguedad)
+        </dd>
+
+        <dt>
+            Madre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.madre)
+        </dd>
+
+        <dt>
+            Padre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.padre)
+        </dd>
+
+    </dl>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>

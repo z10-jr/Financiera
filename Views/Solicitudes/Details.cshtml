@@ -1,0 +1,204 @@
+﻿@model Financiera.Models.Solicitudes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <dl class="dl-horizontal">
+        <dt>
+            N° Solicitud
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            Usuario de Creaci&oacute;n
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarios.nombre)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @ViewBag.Cliente
+        </dd>
+
+        <dt>
+            Cotitular
+        </dt>
+
+        <dd>
+            @ViewBag.Conyuge
+        </dd>
+
+        <dt>
+            Vendedor
+        </dt>
+
+        <dd>
+            @ViewBag.Vendedor
+        </dd>
+
+        <dt>
+            Fecha Creaci&oacute;n
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entidades.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entidades.nombre)
+        </dd>
+
+        <dt>
+            Monto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuotas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuotas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehiculo)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estados.nombre)
+        </dd>
+
+        <dt>
+            Motivo Rechazo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiposRechazos.nombre)
+        </dd>
+
+        <dt>
+            Codigo Entidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoEntidad)
+        </dd>
+
+        <dt>
+            Entrega Gestor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entregaGestor)
+        </dd>
+
+        <dt>
+            Fecha Entregado a Gestor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaEntregaGestor)
+        </dd>
+
+        <dt>
+            Prenda Inscripta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prendaInscripta)
+        </dd>
+
+        <dt>
+            Fecha Inscripci&oacute;n de Prenda
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaInscripcionPrenda)
+        </dd>
+
+        <dt>
+            Fecha Devoluci&oacute;n de Prenda
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaDevolucionPrenda)
+        </dd>
+
+        <dt>
+            Fecha Ultimo Pago
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaUltimoPago)
+        </dd>
+
+        <dt>
+            Fecha Firma
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaFirma)
+        </dd>
+
+        <dt>
+            Fecha Nueva Llamada
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaNuevaLlamada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+    </dl>
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>

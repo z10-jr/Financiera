@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Financiera.Models.usuarios>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<span id="MessageError" class="d-none">@TempData["Error"]</span>
+<span id="MessageSuccess" class="d-none">@TempData["Success"]</span>
+
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+    <p>
+        @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        Apellido
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        DNI
+                    </th>
+                    <th>
+                        Domicilio
+                    </th>
+                    <th>
+                        Telefono
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Perfil
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>
+                        Apellido
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        DNI
+                    </th>
+                    <th>
+                        Domicilio
+                    </th>
+                    <th>
+                        Telefono
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Perfil
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.domicilio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rol.nombre)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id }, new { @class = "btn btn-info  btn-sm" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+
+
+
+<script src="@Url.Content("~/Content/vendor/jquery/jquery.min.js")"></script>
+<script type="text/javascript">
+
+
+    $(function () {
+        var messageError = $('#MessageError').text();
+        var messageSuccess = $('#MessageSuccess').text();
+
+        if (messageSuccess !== '') {
+            toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+            //// Display a success toast, with a title
+            toastr.success(messageSuccess, 'Atención!');
+        }
+
+        if (messageError !== '') {
+
+            toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+            //toastr.info('Are you the 6 fingered man?');
+            //// Display a warning toast, with no title
+            //toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!');
+
+            //// Display a success toast, with a title
+            //toastr.success('Have fun storming the castle!', 'Miracle Max Says');
+
+            //// Display an error toast, with a title
+            toastr.error(message, 'Error!', { timeOut: 5000 });
+
+            //// Immediately remove current toasts without using animation
+            //toastr.remove();
+
+            //// Remove current toasts using animation
+            //toastr.clear();
+
+            //// Override global options
+            //toastr.success('We do have the Kapua suite available.', 'Turtle Bay Resort', { timeOut: 5000 });
+        }
+
+
+
+    });
+</script>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2>¡Bienvenido!</h2>
+<div class="row">
+
+    <div class="alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+    
+
+    <form class="form-signin" action="@Url.Content("~/Acceso/Login")" method="post">
+        <img class="mb-4" src=@Url.Content("~/Content/Images/logo.jpg") alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Ingreso con Correo</h1>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="email" id="inputEmail" name="User" class="form-control" placeholder="Email" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" name="Pass" class="form-control" placeholder="Contraseña" required="">
+        @*<div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Recuerdame
+            </label>
+        </div>*@
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+        <p class="mt-5 mb-3 text-muted">© 2020-2021</p>
+    </form>
+
+
+</div>

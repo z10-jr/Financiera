@@ -1,0 +1,97 @@
+﻿@model Financiera.Models.Vendedores
+
+@{
+    ViewBag.Title = "Detalle Vendedor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    @ViewBag.Title
+</div>
+<div class="card-body">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DNI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DNI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domicilio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concesionario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concesionario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitado)
+        </dd>
+
+    </dl>
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+
+</div>
+
+<div class="card-footer small text-muted">Canal AUTOS - 2021</div>
+
+
