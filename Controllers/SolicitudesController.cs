@@ -34,9 +34,9 @@ namespace Financiera.Controllers
             Clientes cliente = db.Clientes.Find(solicitudes.idCliente);
             Clientes conyuge = db.Clientes.Find(solicitudes.idConyuge);
             Vendedores vendedor = db.Vendedores.Find(solicitudes.idVendedor);
-            ViewBag.Cliente = cliente != null ? cliente.apellido + ", " + cliente.nombre : string.Empty;
-            ViewBag.Conyuge = conyuge != null ? conyuge.apellido + ", " + conyuge.nombre : string.Empty;
-            ViewBag.Vendedor = vendedor != null ? vendedor.Apellido + ", " + vendedor.Nombre : string.Empty;
+            ViewBag.Cliente = cliente != null ? cliente.dni + " - " + cliente.apellido + ", " + cliente.nombre : string.Empty;
+            ViewBag.Conyuge = conyuge != null ? conyuge.dni + " - " + conyuge.apellido + ", " + conyuge.nombre : string.Empty;
+            ViewBag.Vendedor = vendedor != null ? vendedor.DNI + " - " + vendedor.Apellido + ", " + vendedor.Nombre : string.Empty;
             if (solicitudes == null)
             {
                 return HttpNotFound();
@@ -153,9 +153,9 @@ namespace Financiera.Controllers
             Clientes cliente = db.Clientes.Find(solicitudes.idCliente);
             Clientes conyuge = db.Clientes.Find(solicitudes.idConyuge);
             Vendedores vendedor = db.Vendedores.Find(solicitudes.idVendedor);
-            ViewBag.Cliente = cliente != null ? cliente.apellido +", "+ cliente.nombre : string.Empty;
-            ViewBag.Conyuge = conyuge != null ? conyuge.apellido + ", " + conyuge.nombre : string.Empty;
-            ViewBag.Vendedor = vendedor != null ? vendedor.Apellido + ", " + vendedor.Nombre : string.Empty;
+            ViewBag.Cliente = cliente != null ? cliente.dni + " - " + cliente.apellido +", "+ cliente.nombre : string.Empty;
+            ViewBag.Conyuge = conyuge != null ? conyuge.dni + " - " + conyuge.apellido + ", " + conyuge.nombre : string.Empty;
+            ViewBag.Vendedor = vendedor != null ? vendedor.DNI + " - " + vendedor.Apellido + ", " + vendedor.Nombre : string.Empty;
             ViewBag.idConyuge = new SelectList(db.Clientes, "id", "nombre", solicitudes.idConyuge);
             ViewBag.idEntidad = new SelectList(db.Entidades, "id", "nombre", solicitudes.idEntidad);
             ViewBag.idEstado = new SelectList(db.Estados, "id", "nombre", solicitudes.idEstado); //corregir el where para que me traiga todos los post6eriores estados
@@ -233,6 +233,7 @@ namespace Financiera.Controllers
                         observacion.fecha = DateTime.Now;
                         observacion.idTipoObservacion = db.TiposObservaciones.Find(Convert.ToInt32(appSettings["TiposObservacionMovimiento"])).id;
                         observacion.observacion = solicitudes.idEstado != null ? db.Estados.Find(solicitudes.idEstado).nombre : string.Empty;
+                        observacion.Solicitudes = solicitudes;
                         db.Observaciones.Add(observacion);
 
                         db.Entry(solicitudes).State = EntityState.Modified;

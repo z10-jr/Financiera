@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0ef5a9e7b2704ac6b33aaf84c272eead" Name="Diagram1">
+      <Diagram DiagramId="020408f92f284d00aeb55e46af044a03" Name="Diagram1">
         <EntityTypeShape EntityType="FinancieraModel.Categorias" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.Clientes" Width="1.5" PointX="6" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.Entidades" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="FinancieraModel.Provincias" Width="1.5" PointX="3.75" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.rol" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.rol_operacion" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FinancieraModel.SolicitudBancos" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinancieraModel.SolicitudBancos" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.Solicitudes" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.TiposObservaciones" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FinancieraModel.TiposRechazos" Width="1.5" PointX="6" PointY="29.125" IsExpanded="true" />

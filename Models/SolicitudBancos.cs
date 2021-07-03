@@ -22,6 +22,7 @@ namespace Financiera.Models
         public Nullable<decimal> Monto { get; set; }
         public Nullable<decimal> TNA { get; set; }
         public string Observaciones { get; set; }
+        public string CodigoSeguimiento { get; set; }
     
         public virtual Entidades Entidades { get; set; }
         public virtual Solicitudes Solicitudes { get; set; }

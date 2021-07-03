@@ -51,7 +51,7 @@ namespace Financiera.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idSolicitud,idEntidad,Fecha,Plazo,Monto,TNA,Observaciones")] SolicitudBancos solicitudBancos)
+        public ActionResult Create([Bind(Include = "idSolicitud,idEntidad,Fecha,Plazo,Monto,TNA,Observaciones,CodigoSeguimiento")] SolicitudBancos solicitudBancos)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Financiera.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,idSolicitud,idEntidad,Fecha,Plazo,Monto,TNA,Observaciones")] SolicitudBancos solicitudBancos)
+        public ActionResult Edit([Bind(Include = "id,idSolicitud,idEntidad,Fecha,Plazo,Monto,TNA,Observaciones, CodigoSeguimiento")] SolicitudBancos solicitudBancos)
         {
             if (ModelState.IsValid)
             {

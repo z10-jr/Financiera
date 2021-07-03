@@ -134,7 +134,7 @@ namespace Financiera.Controllers
                                                .Select(x => new
                                                {
                                                    id = x.id,
-                                                   label = x.apellido + ", " + x.nombre
+                                                   label = x.dni + " - " + x.apellido + ", " + x.nombre
                                                }).ToList();
 
             

@@ -130,6 +130,7 @@
           <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TNA" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Observaciones" Type="nvarchar" MaxLength="250" />
+          <Property Name="CodigoSeguimiento" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Solicitudes">
           <Key>
@@ -144,7 +145,7 @@
           <Property Name="idRechazo" Type="int" />
           <Property Name="FechaCreacion" Type="datetime" />
           <Property Name="idEstado" Type="int" />
-          <Property Name="monto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="monto" Type="decimal" Precision="18" Scale="2" />
           <Property Name="codigoEntidad" Type="nvarchar" MaxLength="50" />
           <Property Name="entregaGestor" Type="bit" Nullable="false" />
           <Property Name="fechaEntregaGestor" Type="datetime" />
@@ -678,6 +679,7 @@
           <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TNA" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoSeguimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Entidades" Relationship="Self.FK_solicitudbanco_banco" FromRole="SolicitudBancos" ToRole="Entidades" />
           <NavigationProperty Name="Solicitudes" Relationship="Self.FK_solicitudbanco_solicitud" FromRole="SolicitudBancos" ToRole="Solicitudes" />
         </EntityType>
@@ -694,7 +696,7 @@
           <Property Name="idRechazo" Type="Int32" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
           <Property Name="idEstado" Type="Int32" />
-          <Property Name="monto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="monto" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="codigoEntidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="entregaGestor" Type="Boolean" Nullable="false" />
           <Property Name="fechaEntregaGestor" Type="DateTime" Precision="3" />
@@ -1233,6 +1235,7 @@
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="TNA" ColumnName="TNA" />
                 <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="CodigoSeguimiento" ColumnName="CodigoSeguimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
