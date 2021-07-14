@@ -157,7 +157,15 @@ namespace Financiera.Controllers
             ViewBag.Conyuge = conyuge != null ? conyuge.dni + " - " + conyuge.apellido + ", " + conyuge.nombre : string.Empty;
             ViewBag.Vendedor = vendedor != null ? vendedor.DNI + " - " + vendedor.Apellido + ", " + vendedor.Nombre : string.Empty;
             ViewBag.idConyuge = new SelectList(db.Clientes, "id", "nombre", solicitudes.idConyuge);
-            ViewBag.idEntidad = new SelectList(db.Entidades, "id", "nombre", solicitudes.idEntidad);
+            ViewBag.idEntidades = db.SolicitudBancos.Where(p => p.idSolicitud == id)
+                                .Select(x => new SelectListItem
+                                {
+                                    Value = x.Entidades.id.ToString(),
+                                    Text = x.Entidades.nombre,
+                                });
+
+
+            ViewBag.idEntidad = solicitudes.idEntidad.HasValue ? solicitudes.idEntidad.Value : 0;
             ViewBag.idEstado = new SelectList(db.Estados, "id", "nombre", solicitudes.idEstado); //corregir el where para que me traiga todos los post6eriores estados
             ViewBag.idRechazo = new SelectList(db.TiposRechazos, "id", "nombre", solicitudes.idRechazo);
             ViewBag.idUsuario = new SelectList(db.usuarios, "id", "nombre", solicitudes.idUsuario);
@@ -186,30 +194,30 @@ namespace Financiera.Controllers
                     string message = string.Empty;
 
                     //cambios manuales
-                    if (solicitudes.idEstado == Convert.ToInt32(appSettings["CompletoParaCargar"]) && (solicitudes.idEntidad == null || solicitudes.Cuotas == null || solicitudes.codigoEntidad == null))
+                    if (solicitudes.idEstado == Convert.ToInt32(appSettings["CompletoParaCargar"]) && (solicitudes.idEntidad == null || solicitudes.Cuotas == null ))
                     {
                         flag = false;
-                        message = "Debe detallar la Entidad Financiera, el N° de Seguimiento y el Plazo";
+                        message = "Debe detallar la Entidad Financiera y el Plazo";
                     }
                     else if (solicitudes.idEstado == Convert.ToInt32(appSettings["ParaLLamarAFirmar"]) && solicitudes.fechaFirma == null)
                     {
                         flag = false;
                         message = "Debe cargar una Fecha de Firma";
                     }
-                    else if (solicitudes.idEstado == Convert.ToInt32(appSettings["Desaprobado"]) && solicitudes.fechaFirma == null)
+                    else if (solicitudes.idEstado == Convert.ToInt32(appSettings["Desaprobado"]) && solicitudes.idRechazo == null)
                     {
                         flag = false;
                         message = "Debe cargar Motivo de Rechazo";
                     }
-                    else if (solicitudes.idEstado == Convert.ToInt32(appSettings["Firmado"]) && (solicitudes.idRechazo == null))
+                    else if (solicitudes.idEstado == Convert.ToInt32(appSettings["DesistioElCliente"]) && (solicitudes.idRechazo == null || solicitudes.fechaNuevaLlamada == null) )
                     {
                         flag = false;
-                        message = "Debe cargar Motivo de Rechazo";
+                        message = "Debe cargar motivo desistimiento y nueva fecha de llamada";
                     }
 
                     //cambios automaticos
                     Clientes cliente = db.Clientes.Find(solicitudes.idCliente);
-                    if (solicitudes.idEstado == Convert.ToInt32(appSettings["Inicial"]) && cliente.telefono != string.Empty && cliente.apellido != string.Empty && cliente.nombre != string.Empty && solicitudes.monto != null)
+                    if (solicitudes.idEstado == Convert.ToInt32(appSettings["Inicial"]) && cliente.telefono != string.Empty && cliente.apellido != string.Empty && cliente.nombre != string.Empty && solicitudes.monto != null && solicitudes.idVendedor != null)
                     {
                         solicitudes.idEstado = Convert.ToInt32(appSettings["EnAnalisis"]);
                     }

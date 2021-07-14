@@ -56,7 +56,13 @@
         <div class="form-group">
             <label class="control-label col-md-3" for="idEntidad">Entidad</label>
             <div class="col-md-10">
-                @Html.DropDownList("idEntidad", null, htmlAttributes: new { @class = "form-control" })
+                <select name="idEntidad" class = "form-control">
+                    <option value="-1">SELECCIONE</option>
+                    @foreach (var item in ViewBag.idEntidades) { 
+                        
+                        <option value="@item.Value"@(ViewBag.idEntidad == Convert.ToInt32(item.Value) ? "selected" : "") >@item.Text</option>
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.idEntidad, "", new { @class = "text-danger" })
             </div>
         </div>
